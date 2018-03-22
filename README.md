@@ -8,7 +8,7 @@
 
 **!!! Note that only hadoop-slave1 will be run in this forked project.**
 
-### 3 Nodes Hadoop Cluster
+### Nodes Hadoop Cluster
 
 ##### 1. clone github repository
 
@@ -19,7 +19,7 @@ git clone https://github.com/neoremind/hadoop-cluster-docker
 ##### 2. create hadoop network
 
 ```
-sudo docker network create --driver=bridge hadoop
+docker network create --driver=bridge hadoop
 ```
 
 ##### 3. Create image locally
@@ -32,7 +32,7 @@ cd hadoop-cluster-docker && docker build -t xuzh/hadoop:1.0 .
 
 ```
 cd hadoop-cluster-docker
-sudo ./start-container.sh
+./start-container.sh
 ```
 
 **output:**
@@ -44,6 +44,14 @@ root@hadoop-master:~#
 ```
 - start 2 containers with 1 master and 1 slaves
 - you will get into the /root directory of hadoop-master container
+
+you can check by running:
+```
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                                                                        NAMES
+e3f5ad6ebac0        xuzh/hadoop:1.0     "sh -c 'service ssh s"   7 hours ago         Up 7 hours          0.0.0.0:8042->8042/tcp, 0.0.0.0:8090-8091->8090-8091/tcp, 0.0.0.0:8190-8191->8190-8191/tcp   hadoop-slave1
+c5c094753715        xuzh/hadoop:1.0     "sh -c 'service ssh s"   7 hours ago         Up 7 hours          0.0.0.0:8088->8088/tcp, 0.0.0.0:50070->50070/tcp                                             hadoop-master
+```
 
 ##### 5. start hadoop
 
