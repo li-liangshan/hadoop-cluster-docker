@@ -28,6 +28,11 @@ docker network create --driver=bridge hadoop
 cd hadoop-cluster-docker && docker build -t xuzh/hadoop:1.0 .
 ```
 
+you can check by running:
+```
+$ docker images
+```
+
 ##### 4. start docker container and login to hadoop-master
 
 ```
@@ -80,3 +85,10 @@ http://hadoop-master:8088
 ```
 
 If you can open the page, then everything is done.
+
+##### 9. stop
+
+```
+docker stop <CONTAINER_ID>
+docker rm -f <CONTAINER_ID>
+```
