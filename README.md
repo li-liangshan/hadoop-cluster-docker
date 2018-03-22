@@ -6,7 +6,7 @@
 
 ![alt tag](https://raw.githubusercontent.com/kiwenlau/hadoop-cluster-docker/master/hadoop-cluster-docker.png)
 
-Note that only hadoop-slave1 will be run in this forked project.
+**!!! Note that only hadoop-slave1 will be run in this forked project.**
 
 ### 3 Nodes Hadoop Cluster
 
