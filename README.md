@@ -90,5 +90,6 @@ If you can open the page, then everything is done.
 
 ```
 docker stop <CONTAINER_ID>
+or
 docker rm -f <CONTAINER_ID>
 ```
