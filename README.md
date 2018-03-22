@@ -6,28 +6,29 @@
 
 ![alt tag](https://raw.githubusercontent.com/kiwenlau/hadoop-cluster-docker/master/hadoop-cluster-docker.png)
 
+Note that only hadoop-slave1 will be run in this forked project.
 
 ### 3 Nodes Hadoop Cluster
 
-##### 1. pull docker image
+##### 1. clone github repository
 
 ```
-sudo docker pull kiwenlau/hadoop:1.0
+git clone https://github.com/neoremind/hadoop-cluster-docker
 ```
 
-##### 2. clone github repository
-
-```
-git clone https://github.com/kiwenlau/hadoop-cluster-docker
-```
-
-##### 3. create hadoop network
+##### 2. create hadoop network
 
 ```
 sudo docker network create --driver=bridge hadoop
 ```
 
-##### 4. start container
+##### 3. Create image locally
+
+```
+cd hadoop-cluster-docker && docker build -t xuzh/hadoop:1.0 .
+```
+
+##### 4. start docker container and login to hadoop-master
 
 ```
 cd hadoop-cluster-docker
@@ -39,10 +40,9 @@ sudo ./start-container.sh
 ```
 start hadoop-master container...
 start hadoop-slave1 container...
-start hadoop-slave2 container...
 root@hadoop-master:~# 
 ```
-- start 3 containers with 1 master and 2 slaves
+- start 2 containers with 1 master and 1 slaves
 - you will get into the /root directory of hadoop-master container
 
 ##### 5. start hadoop
@@ -51,50 +51,24 @@ root@hadoop-master:~#
 ./start-hadoop.sh
 ```
 
-##### 6. run wordcount
+##### 6. start job history server
 
 ```
-./run-wordcount.sh
+./start-historyserver.sh
 ```
 
-**output**
+##### 7. configure /etc/hosts
 
+add the following to /etc/hosts
 ```
-input file1.txt:
-Hello Hadoop
-
-input file2.txt:
-Hello Docker
-
-wordcount output:
-Docker    1
-Hadoop    1
-Hello    2
+127.0.0.1       hadoop-master
+127.0.0.1       hadoop-slave1
 ```
 
-### Arbitrary size Hadoop cluster
-
-##### 1. pull docker images and clone github repository
-
-do 1~3 like section A
-
-##### 2. rebuild docker image
+##### 8. visit hadoop yarn resource manager
 
 ```
-sudo ./resize-cluster.sh 5
+http://hadoop-master:8088
 ```
-- specify parameter > 1: 2, 3..
-- this script just rebuild hadoop image with different **slaves** file, which pecifies the name of all slave nodes
 
-
-##### 3. start container
-
-```
-sudo ./start-container.sh 5
-```
-- use the same parameter as the step 2
-
-##### 4. run hadoop cluster 
-
-do 5~6 like section A
-
+If you can open the page, then everything is done.
