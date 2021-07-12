@@ -16,13 +16,13 @@ while [ $i -lt $N ]
 do
 	echo "hadoop-slave$i" >> config/slaves
 	((i++))
-done 
+done
 
 echo ""
 
 echo -e "\nbuild docker hadoop image\n"
 
-# rebuild kiwenlau/hadoop image
-docker build -t kiwenlau/hadoop:1.0 .
+# rebuild liliangshan/hadoop-2.7.2:1.0 image
+docker build -t liliangshan/hadoop-2.7.2:1.0 .
 
 echo ""

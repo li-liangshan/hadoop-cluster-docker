@@ -13,7 +13,7 @@ docker run -itd \
                 -p 8088:8088 \
                 --name hadoop-master \
                 --hostname hadoop-master \
-                xuzh/hadoop:1.0
+                liliangshan/hadoop-2.7.2:1.0
 
 
 # start hadoop slave container
@@ -31,9 +31,9 @@ do
                     -p 8191:8191 \
 	                --name hadoop-slave$i \
 	                --hostname hadoop-slave$i \
-	                xuzh/hadoop:1.0
+	                liliangshan/hadoop-2.7.2:1.0
 	i=$(( $i + 1 ))
-done 
+done
 
 # get into hadoop master container
 docker exec -it hadoop-master bash
